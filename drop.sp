@@ -4,6 +4,8 @@
 #include <sdktools>
 #include <sdkhooks>
 
+#define PL_VERSION "1.0.0"
+
 #pragma semicolon 1
 #pragma newdecls required
 
@@ -21,7 +23,7 @@ public Plugin myinfo =
 {
 	name = "Drop",
 	author = "Bara",
-	version = "1.0.0",
+	version = PL_VERSION,
 	description = "",
 	url = "www.bara.in"
 };
@@ -33,6 +35,8 @@ public void OnPluginStart()
 		SetFailState("Only CSS and CSGO Support");
 		return ;
 	}
+	
+	CreateConVar("cs_drop_version", PL_VERSION, "With this Plugin you can drop your grenades and knives.", FCVAR_NOTIFY | FCVAR_DONTRECORD);
 	
 	g_cEnable = CreateConVar("drop_enable", "1");
 	g_cTaser = CreateConVar("drop_taser", "1");
