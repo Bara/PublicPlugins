@@ -95,7 +95,7 @@ public Action Command_Drop(int client, const char[] command, int args)
 				return Plugin_Handled;
 			}
 		}
-		else if ((StrContains("knife", sName, false) != -1) || (StrContains("bayonet", sName, false) != -1) && g_cKnife.BoolValue)
+		else if ((StrContains(sName, "knife", false) != -1) || (StrContains(sName, "bayonet", false) != -1) && g_cKnife.BoolValue)
 		{
 			SDKHooks_DropWeapon(client, weapon);
 			return Plugin_Handled;
