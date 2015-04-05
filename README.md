@@ -1,3 +1,3 @@
 # JailPlugins
 ### List of all plugins:
-- currently none :(
+- [Drop](https://github.com/Bara20/JailPlugins/blob/master/drop.sp)
