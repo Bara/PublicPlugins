@@ -38,15 +38,15 @@ public void OnPluginStart()
 	
 	CreateConVar("cs_drop_version", PL_VERSION, "With this Plugin you can drop your grenades and knives.", FCVAR_NOTIFY | FCVAR_DONTRECORD);
 	
-	g_cEnable = CreateConVar("drop_enable", "1");
-	g_cTaser = CreateConVar("drop_taser", "1");
-	g_cHEGrenade = CreateConVar("drop_hegrenade", "1");
-	g_cFlash = CreateConVar("drop_flashbang", "1");
-	g_cSmoke = CreateConVar("drop_smokegrenade", "1");
-	g_cIncGrenade = CreateConVar("drop_incgrenace", "1");
-	g_cMolotov = CreateConVar("drop_molotov", "1");
-	g_cDecoy = CreateConVar("drop_decoy", "1");
-	g_cKnife = CreateConVar("drop_knife", "1");
+	g_cEnable = CreateConVar("drop_enable", "1", "Should be enabled this plugin?");
+	g_cTaser = CreateConVar("drop_taser", "1", "Enable \"taser\" drop?");
+	g_cHEGrenade = CreateConVar("drop_hegrenade", "1", "Enable \"hegrenade\" drop?");
+	g_cFlash = CreateConVar("drop_flashbang", "1", "Enable \"flashbang\" drop?");
+	g_cSmoke = CreateConVar("drop_smokegrenade", "1", "Enable \"smokegrenade\" drop?");
+	g_cIncGrenade = CreateConVar("drop_incgrenace", "1", "Enable \"incgrenade\" drop?");
+	g_cMolotov = CreateConVar("drop_molotov", "1", "Enable \"molotov\" drop?");
+	g_cDecoy = CreateConVar("drop_decoy", "1", "Enable \"decoy\" drop?");
+	g_cKnife = CreateConVar("drop_knife", "1", "Enable \"knife\" drop?");
 	
 	AutoExecConfig();
 
