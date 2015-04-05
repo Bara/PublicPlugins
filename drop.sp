@@ -43,6 +43,8 @@ public void OnPluginStart()
 	g_cMolotov = CreateConVar("drop_molotov", "1");
 	g_cDecoy = CreateConVar("drop_decoy", "1");
 	g_cKnife = CreateConVar("drop_knife", "1");
+	
+	AutoExecConfig();
 
 	AddCommandListener(Command_Drop, "drop");
 }
@@ -89,7 +91,7 @@ public Action Command_Drop(int client, const char[] command, int args)
 				return Plugin_Handled;
 			}
 		}
-		else if (StrEqual("weapon_knife", sName, false) && g_cKnife.BoolValue)
+		else if ((StrContains("knife", sName, false) != -1) || (StrContains("bayonet", sName, false) != -1) && g_cKnife.BoolValue)
 		{
 			SDKHooks_DropWeapon(client, weapon);
 			return Plugin_Handled;
