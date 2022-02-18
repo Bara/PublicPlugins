@@ -37,10 +37,10 @@ public void OnPluginStart()
     Core.EnableHealth = AutoExecConfig_CreateConVar("ct_boost_enable_health", "1", "Enable Health CT Boost?", _, true, 0.0, true, 1.0);
     Core.EnableHealthMulti = AutoExecConfig_CreateConVar("ct_boost_health_multi", "10.2842", "Multiplicator for CT Boost Health");
     Core.EnableArmor = AutoExecConfig_CreateConVar("ct_boost_enable_armor", "1", "Enable Armor CT Boost?", _, true, 0.0, true, 1.0);
-    Core.ArmorTeams = AutoExecConfig_CreateConVar("ct_boost_armor_teams", "0", "Enable armor for CT at a specific team balance (CT/T). 0 - Disabled, ct_boost_enable_armor doesn't need to be enabled", _, true, 0.0);
+    Core.ArmorTeams = AutoExecConfig_CreateConVar("ct_boost_armor_teams", "0", "Enable armor for CT at a specific team balance (T/CT). 0 - Disabled, ct_boost_enable_armor doesn't need to be enabled", _, true, 0.0);
     Core.ArmorValue = AutoExecConfig_CreateConVar("ct_boost_armor_value", "110", "How much armor should be added(!)?");
     Core.EnableHelm = AutoExecConfig_CreateConVar("ct_boost_enable_helm", "1", "Enable Helm CT Boost?", _, true, 0.0, true, 1.0);
-    Core.HelmTeams = AutoExecConfig_CreateConVar("ct_boost_enable_armor", "0", "Enable helm for CT at a specific team balance (CT/T). 0 - Disabled, ct_boost_enable_helm doesn't need to be enabled", _, true, 0.0);
+    Core.HelmTeams = AutoExecConfig_CreateConVar("ct_boost_enable_armor", "0", "Enable helm for CT at a specific team balance (T/CT). 0 - Disabled, ct_boost_enable_helm doesn't need to be enabled", _, true, 0.0);
     AutoExecConfig_ExecuteFile();
     AutoExecConfig_CleanFile();
 }
@@ -75,13 +75,13 @@ public Action PlayerSpawn(Event event, const char[] name, bool dontBroadcast)
         
         
         // Armor
-        if (Core.EnableArmor.BoolValue || (iCT / iT < Core.ArmorTeams.FloatValue))
+        if (Core.EnableArmor.BoolValue || (iT / iCT > Core.ArmorTeams.FloatValue))
         {
             SetEntProp(client, Prop_Send, "m_ArmorValue", GetEntProp(client, Prop_Send, "m_ArmorValue") + Core.ArmorValue.IntValue);
         }
 
         // Helm
-        if (Core.EnableHelm.BoolValue || (iCT / iT < Core.HelmTeams.FloatValue))
+        if (Core.EnableHelm.BoolValue || (iT / iCT > Core.HelmTeams.FloatValue))
         {
             SetEntProp(client, Prop_Send, "m_bHasHelmet", 1);
         }
