@@ -21,7 +21,7 @@ ConVars Core;
 
 public Plugin myinfo =
 {
-    name = "CT BOost", 
+    name = "CT Boost", 
     author = "Bara", 
     description = "", 
     version = "1.0", 
@@ -43,9 +43,11 @@ public void OnPluginStart()
     Core.HelmTeams = AutoExecConfig_CreateConVar("ct_boost_enable_armor", "0", "Enable helm for CT at a specific team balance (T/CT). 0 - Disabled, ct_boost_enable_helm doesn't need to be enabled", _, true, 0.0);
     AutoExecConfig_ExecuteFile();
     AutoExecConfig_CleanFile();
+
+    HookEvent("player_spawn", Event_PlayerSpawn);
 }
 
-public Action PlayerSpawn(Event event, const char[] name, bool dontBroadcast)
+public Action Event_PlayerSpawn(Event event, const char[] name, bool dontBroadcast)
 {
     int client = GetClientOfUserId(event.GetInt("userid"));
     
